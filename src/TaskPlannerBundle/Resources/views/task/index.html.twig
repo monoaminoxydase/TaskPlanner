@@ -1,0 +1,62 @@
+{% extends 'TaskPlannerBundle::base.html.twig' %}
+
+{% block body %}
+    <h1 style="margin-left: 200px; padding-bottom: 70px">Task list</h1>
+
+    <table style="width: 100%; text-align: left; padding: 15px; margin-left: -100px">
+        <thead style="width: 100%; text-align: center">
+            <tr style="width: 75%; text-align: left; padding: 15px">
+                {# <th>Id</th>#}
+                <th>Name</th>
+                <th>Description</th>
+                <th>Completed</th>
+                <th>Task category</th>
+                <th>Number of <br> comments</th>
+                <th style="text-align: center">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for task in tasks %}
+            <tr>
+                {#<td>{{ task.id }}</td>#}
+                <td><a href="{{ path('task_show', { 'id': task.id }) }}">{{ task.name }}</a></td>
+                <td>{{ task.description }}</td>
+                <td>{% if task.completed %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    {% for taskCategory in task.taskCategories %}
+                    {{ taskCategory.name }}<br>
+                    {% endfor %}
+                </td>
+                <td>
+                    <p><a href="{{ path('comment_index', { 'taskId': task.id }) }}">{{ task.comments|length }}</a></p>
+
+                </td>
+                <td>
+                    <ul style="list-style-type:none">
+                        <li>
+                            <a href="{{ path('task_edit', { 'id': task.id }) }}">edit</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('task_show', { 'id': task.id }) }}">delete</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('comment_new', { 'taskId': task.id }) }}">add comment</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <br>
+    <ul style="list-style-type:none; margin-left: 20%">
+        <li>
+            <p><button><a href="{{ path('task_new') }}">Create a new task</a></button></p>
+        </li>
+        <li>
+            <p><button><a href="{{ path('taskcategory_new') }}">Create a new category</a></button></p>
+        </li>
+
+    </ul>
+{% endblock %}

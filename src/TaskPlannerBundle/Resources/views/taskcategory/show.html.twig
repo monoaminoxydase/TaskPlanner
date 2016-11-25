@@ -1,0 +1,32 @@
+{% extends 'TaskPlannerBundle::base.html.twig' %}
+
+{% block body %}
+    <h1 style="margin-left: 120px; padding-bottom: 70px">Task category</h1>
+
+    <table style="width: 30%; text-align: left; padding: 15px; margin-left: 120px">
+        <tbody style="padding: 50px">
+            <tr>
+                <th>Name</th>
+                <td>{{ taskCategory.name }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br>
+    <ul style="list-style-type:none; margin-left: 80px; padding-top: 70px">
+        <li>
+            <p><button><a href="{{ path('task_index') }}">Back to the task list</a></button></p>
+        </li>
+        <li>
+            <p><button><a href="{{ path('taskcategory_index') }}">Back to the task category list</a></button></p>
+        </li>
+        <li>
+            <p><button><a href="{{ path('taskcategory_edit', { 'id': taskCategory.id }) }}">Edit task category</a></button></p>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

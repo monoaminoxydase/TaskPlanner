@@ -1,0 +1,29 @@
+{% extends 'TaskPlannerBundle::base.html.twig' %}
+
+{% block body %}
+
+    <div class="container" style="align:center; margin-left: 10%">
+    <h1>Edit comment</h1>
+
+    {{ form_start(edit_form) }}
+    <div style="align:center">
+        <div>
+            {{ form_label(edit_form.text) }}<br>
+            {{ form_widget(edit_form.text) }}
+        </div>
+        <br>
+        <input type="submit" value="Edit" /><br>
+        <br>
+    {{ form_end(edit_form) }}
+
+
+    <ul style="list-style-type:none">
+        <li>
+            <p><button><a href="{{ path('comment_index', { 'taskId': task.id }) }}">Back to the comment list</a></button></p>
+        </li>
+        <li>
+            <p><button><a href="{{ path('task_show', { 'id': task.id }) }}">Back to the task ({{ task.name }})</a></button></p>
+        </li>
+    </ul>
+    </div>
+{% endblock %}

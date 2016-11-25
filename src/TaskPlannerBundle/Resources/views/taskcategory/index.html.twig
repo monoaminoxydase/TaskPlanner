@@ -1,0 +1,41 @@
+{% extends 'TaskPlannerBundle::base.html.twig' %}
+
+{% block body %}
+    <h1 style="margin-left: 150px; padding-bottom: 70px">Task categories</h1>
+
+    <table style="width: 50%; margin-left: 150px">
+        <thead>
+            <tr class="row">
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for taskCategory in taskCategories %}
+            <tr class="row">
+                <td><a href="{{ path('taskcategory_show', { 'id': taskCategory.id }) }}">{{ taskCategory.name }}</a></td>
+                <td>
+                    <ul style="list-style-type:none">
+                        <li>
+                            <a href="{{ path('taskcategory_show', { 'id': taskCategory.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('taskcategory_edit', { 'id': taskCategory.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <br>
+    <ul style="list-style-type:none; margin-left: 20%; padding-top: 70px">
+        <li>
+            <p><button><a href="{{ path('taskcategory_new') }}">Create a new task category</a></button></p>
+        </li>
+        <li>
+            <p><button><a href="{{ path('task_index') }}">Back to the task list</a></button></p>
+        </li>
+    </ul>
+{% endblock %}

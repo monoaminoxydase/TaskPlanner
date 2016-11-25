@@ -1,0 +1,42 @@
+{% extends 'TaskPlannerBundle::base.html.twig' %}
+
+{% block body %}
+
+    <div style="align:center; margin-left: 150px">
+    <h1>Create a new task</h1>
+
+    {{ form_start(form) }}
+
+    <div class="form-group">
+        {{ form_label(form.name) }}<br>
+        {{ form_widget(form.name) }}
+    </div>
+
+    <div>
+        {{ form_label(form.description) }}<br>
+        {{ form_widget(form.description) }}
+    </div>
+
+    <div>
+        {{ form_label(form.completed) }}<br>
+        {{ form_widget(form.completed) }}
+    </div>
+
+    <div>
+        {{ form_label(form.taskCategories) }}<br>
+        {{ form_widget(form.taskCategories) }}
+    </div>
+
+    <br>
+    <input type="submit" value="Create" />
+    {{ form_end(form) }}
+
+
+    <br>
+    <ul style="list-style-type:none">
+        <li>
+           <p><button><a href="{{ path('task_index') }}">Back to the task list</a></button></p>
+        </li>
+    </ul>
+    </div>
+{% endblock %}

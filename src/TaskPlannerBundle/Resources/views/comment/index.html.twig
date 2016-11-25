@@ -1,0 +1,28 @@
+{% extends 'TaskPlannerBundle::base.html.twig' %}
+
+{% block body %}
+    <h1 style="margin-left: 70px; padding-bottom: 70px">Comments for task: {{ task.name }}</h1>
+
+    <table style="width: 75%; text-align: left; padding: 15px; margin-left: 120px">
+        <tbody style="padding: 50px">
+
+        {% for comment in task.comments %}
+            <tr>
+                <td>{{ comment.text }}<br></td>
+                <td style="padding: 15px"><p><button><a href="{{ path('comment_edit', { 'id': comment.id, 'taskId': task.id }) }}">Edit </a></button></p>
+                    <p><button><a href="{{ path('comment_delete', { 'id': comment.id, 'taskId': task.id }) }}">Delete </a></button></p></td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+    <br>
+    <ul style="list-style-type:none; margin-left: 150px; padding-top: 70px">
+        <li>
+            <p><button><a href="{{ path('task_show', { 'id': task.id }) }}">Back to the task</a></button></p>
+        </li>
+    </ul>
+{% endblock %}
+
+

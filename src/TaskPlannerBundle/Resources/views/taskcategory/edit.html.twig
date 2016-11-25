@@ -1,0 +1,41 @@
+{% extends 'TaskPlannerBundle::base.html.twig' %}
+
+{% block body %}
+
+    <div style="align:center; margin-left: 10%">
+    <h1>Edit task category</h1>
+
+    {{ form_start(edit_form) }}
+    <div style="align:center">
+    <div>
+        {{ form_label(edit_form.name) }}<br>
+        {{ form_widget(edit_form.name) }}
+    </div>
+
+    <div>
+        {{ form_label(edit_form.tasks) }}<br>
+        {{ form_widget(edit_form.tasks) }}
+    </div>
+
+    <br>
+
+    <input type="submit" value="Edit" /><br>
+
+    <br>
+    {{ form_end(edit_form) }}
+
+    <ul style="list-style-type:none; margin-left: -6%">
+        <li>
+            <p><button><a href="{{ path('taskcategory_index') }}">Back to the list of task categories</a></button></p>
+        </li>
+        <li>
+            <p><button><a href="{{ path('task_index') }}">Back to the task list</a></button></p>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+    </div>
+{% endblock %}
